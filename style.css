@@ -1,0 +1,15 @@
+body{
+    background-image:url("bg1.jpg");
+    background-position:center;
+    background-size:cover;
+}
+h1{
+    color:black;
+    font-size: 40px;
+}
+#Canvas1
+  {
+      border-width:10px;
+      background-color: whitesmoke; 
+      border-style:ridge;
+  }
