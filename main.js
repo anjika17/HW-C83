@@ -1,9 +1,9 @@
 var last_x,last_y;
-var mouse_event=["empty"];
+var mouse_event="empty";
  var Canvas=document.getElementById("Canvas1");
  var ctx=Canvas.getContext("2d")
 var color=document.getElementById("color").value;
-var width_of_line=document.getElementById("width_of_line");
+var width_of_line=document.getElementById("width_of_line").value;
 var width=screen.width;
 var new_width=screen.width - 70;
 var new_height=screen.height - 300
@@ -22,19 +22,14 @@ if (width<992){
    last_y = e.touches[0].clientY - Canvas.offsetTop;
       color = document.getElementById("color").value;
       width_of_line = document.getElementById("width_of_line").value;
-var mouse_event="touchstart";
+ mouse_event="touchstart";
   
   }
-  if(mouse_event = "touchstart"){
     Canvas.addEventListener("touchmove", my_touchmove);
-  }
   function my_touchmove(e)
   {
 console.log("touchmove");
 
-if(mouse_event = "touchstart"){
-
-}
 current_position_of_touch_x = e.touches[0].clientX - Canvas.offsetLeft;
        current_position_of_touch_y = e.touches[0].clientY - Canvas.offsetTop;
 
@@ -42,9 +37,6 @@ current_position_of_touch_x = e.touches[0].clientX - Canvas.offsetLeft;
       ctx.beginPath();
       ctx.strokeStyle = color;
       ctx.lineWidth = width_of_line;
-      if(my_touchstart = true){
-        my_touchmove = true ;
-      }
 
       console.log("Last position of x and y coordinates = ");
       console.log("x = " + last_x + "y = " + last_y);
@@ -56,8 +48,8 @@ current_position_of_touch_x = e.touches[0].clientX - Canvas.offsetLeft;
       ctx.stroke();
       
 
-      last_position_of_x = current_position_of_touch_x; 
-      last_position_of_y = current_position_of_touch_y;
+      last_x = current_position_of_touch_x; 
+      last_y = current_position_of_touch_y;
   }
 Canvas.addEventListener("mousedown", my_mousedown);
 function my_mousedown(e){
@@ -66,15 +58,15 @@ function my_mousedown(e){
     last_y = e.clientY - Canvas.offsetTop;
        color = document.getElementById("color").value;
        width_of_line = document.getElementById("width_of_line").value;
-        var mouse_event = "mousedown"
+       mouse_event = "mousedown"
 }
-if (mouse_event = "mousedown"){
   Canvas.addEventListener("mousemove", my_mousemove);
-}
 
 function my_mousemove(e){
     current_position_of_x = e.clientX - Canvas.offsetLeft;
     current_position_of_y = e.clientY - Canvas.offsetTop;
+
+   if(mouse_event = "mousedown"){
 
    
    ctx.beginPath();
@@ -90,4 +82,8 @@ function my_mousemove(e){
    console.log("x  = " + current_position_of_x + "y = " + current_position_of_y);
    ctx.lineTo(current_position_of_x, current_position_of_y);
    ctx.stroke();
+   }
+
+  last_x = current_position_of_x ;
+  last_y = current_position_of_y;
 }
